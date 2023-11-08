@@ -52,51 +52,55 @@ Follow these steps to set up and run the User_auth application.
 
 After you've successfully installed the User_auth application, you can proceed with the following steps:
 
-1. **Configuration**:
+ **Configuration**:
 
    - Create a `.env` file in the project's root directory and configure your environment variables. Use the provided template in the [Configuration](#configuration) section.
+Login
+To access a user's profile information, send a GET request to the /api/login endpoint with a valid JWT token in the Authorization header.
+### Login
 
-2. **Customization**:
+To access a user's profile information, follow these steps:
 
-   - Customize other configurations if needed, such as defining database models, adding routes, and setting up middleware. Ensure that the application meets your specific requirements.
+1. **Authentication**:
 
-3. **Running the Application**:
+   - First, a user must be authenticated to obtain an authentication token. Refer to the [Sign In](#sign-in) section for details on how to obtain the authentication token.
 
-   - To start the User_auth application, run the following command:
+2. **Accessing Profile Information**:
+
+   - After successfully signing in and receiving an authentication token, you can use this token to access a user's profile information.
+
+3. **Making a GET Request**:
+
+   - Make a `GET` request to the `/api/login` endpoint with the valid JWT token included in the `Authorization` header of your HTTP request.
+
+   - Example using curl:
 
      ```bash
-     npm start
+     curl -X GET http://localhost:3000/api/login -H "Authorization: Bearer your-jwt-token"
      ```
 
-   The application will run on the port specified in your `.env` file.
+4. **Response**:
 
-4. **Testing** (Optional):
+   - If the JWT token is valid, the application will respond with the user's profile information in JSON format.
 
-   - You can run tests to ensure the application is working as expected. Use the following command:
+   - Example response:
 
-     ```bash
-     npm test
+     ```json
+     {
+       "user_id": "123456",
+       "username": "exampleuser",
+       "email": "user@example.com",
+       "other_fields": "..."
+     }
      ```
 
-5. **API Documentation**:
+5. **Authorization Error**:
 
-   - Document the available API endpoints in your project, as mentioned in the [API Endpoints](#api-endpoints) section. Provide details about the request and response structures, expected status codes, and any specific considerations.
+   - If the provided JWT token is invalid, expired, or missing, the application will respond with an authorization error. Ensure that you have a valid token before making the `GET` request.
 
-6. **Deployment** (Optional):
+Please note that accessing a user's profile information is a protected endpoint and requires a valid JWT token for authentication.
 
-   - If you plan to deploy the User_auth application to a production environment, make sure to follow best practices for deployment, such as using a reverse proxy, securing your application, and setting up a robust database for production use.
+**Note**: You can customize the returned user profile fields and response format according to your project's specific requirements.
 
-7. **Using the Application**:
-
-   - With the application running, you can now use the provided API endpoints to create user accounts, authenticate, and manage user profiles, as described in the [Usage](#usage) section.
-
-8. **Contributing**:
-
-   - If you would like to contribute to the project or report issues, refer to the [Contributing](#contributing) section for guidelines on how to get involved.
-
-9. **License**:
-
-   - Review the project's [License](#license) section to understand the terms under which the project is released.
-
-Feel free to reach out if you encounter any issues or have questions related to
+By following these steps, you can successfully retrieve a user's profile information after they have been authenticated.
 
