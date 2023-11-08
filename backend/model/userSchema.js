@@ -1,4 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config()
+
+
+const JWT= require("jsonwebtoken");
+
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -27,6 +32,30 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+
+//mongoose Give special power to generate custom method................>>>>>>>>>>>
+
+userSchema.methods={
+
+    jwtToken()
+    {
+        return JWT.sign(
+            {id:this.id,email:this.email},
+            process.env.SECRET,
+            { 
+                expiresIn:'24h'
+            }
+
+           
+
+
+
+        )
+    }
+
+}
+
+
 
 const userModel = mongoose.model('user', userSchema);
 module.exports = userModel;
