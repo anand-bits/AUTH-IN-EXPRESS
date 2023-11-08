@@ -1,0 +1,25 @@
+1.In app.js The server is started and in the app.js Server is intatialise------------>
+
+2. In App.js we have use the routes . that mean whatever we will request will talk to routes............>
+
+3.Routes coutain the route and That will interact with controller....>
+
+4. controller have the logic what will happeen when the routes is called ..
+
+
+5. App.js willl call routes ,routes wiill call the Controller and controller will telll what to do ..............>
+
+
+
+!!!!!!!!! Important  Thing to be Knowm----------------------->>>>>>>>>>>>>>>>>>>>>>>>>>..
+
+
+1.Router(/signup,POST,Signup())
+2. Controller(Signup())
+3.App.js/api/auth>authRoute
+
+
+!!!!!!!!!!!!!!!!!!! Environment Files--------.env............t>>>>>>>>>>>>
+ 1. what is the environment File and why use:-
+  Environment variables are variables available to ur program dynamically during runtime..Its used to store the sensitive data such as passwords , ApI credentials.
+  
