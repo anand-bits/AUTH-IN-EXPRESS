@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
+const bcrypt= require('bcrypt')
 
 
 const JWT= require("jsonwebtoken");
@@ -32,6 +33,20 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+
+//Bcryption is done here And Password will be encrypted ------------------------->
+
+userSchema.pre('save',async function(next)
+{
+    if(!this.isModified('password'))
+    {
+        return next();
+
+
+    }
+    this.password= await bcrypt.hash(this.password,10)
+    return next()
+})
 
 //mongoose Give special power to generate custom method................>>>>>>>>>>>
 

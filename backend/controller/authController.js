@@ -1,5 +1,7 @@
 const userModel = require("../model/userSchema");
 const emailValidator=require("email-validator")
+const bcrypt= require('bcrypt')
+
 
 
 
@@ -80,9 +82,9 @@ const signin= async (req,res)=>
         }
 
         try{
-        const user=await userModel.findOne({email}).select('password');
+        const user=await userModel.findOne({email}).select('+password');
 
-        if(!user || user.password!==password)
+        if(!user || ! await bcrypt.compare(password,user.password))
         {
             return res.status(400).json({
                 success: false,
