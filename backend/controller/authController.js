@@ -109,20 +109,51 @@ return res.status(200).json({
 })
 
 }
-catch(err){
-    console.error("Error in signin:", err); // Log the error for debugging
+catch (err) {
+   
     return res.status(400).json({
         success: false,
-        message: "Error during signin. Please check the server logs for more details."
+        message:err.message
     });
+}
 
 }
+
+//We have to verify that user id is already loggedin 
+
+const getUser=async(req,res,next)=>
+{
+    const userId=req.user.id;
+
+    try{
+        const user= await userModel.findById(userId)
+
+        return res.status(200).json(
+            {
+                success:true,
+                data:user
+            }
+        );
+    
+        
+
+    }
+
+    catch(e)
+    {
+        return res.status(400).json({
+            success: false,
+            message: e.message
+        });
+    }
+
 }
+// Till here  Token is created , Signin using the token ,Signup, and get user is working
 
 
 
 
 
 module.exports={
-    signup,signin
+    signup,signin,getUser
 }
