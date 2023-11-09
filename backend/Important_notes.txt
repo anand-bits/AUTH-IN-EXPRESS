@@ -28,5 +28,20 @@
 
 
   !!!!!!  Signin----------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>
+  1.After the giving the email and Password , a cookie and token is made .
+  So by using that token we can get The userid and data from Mongo db...
+
+
+
+  !!!!!get user--------------------------------->>>>>>>>>>>>
+  1. So while SIgnin we get token and Cookie so while getting the user details we need to see the user are loggedin..
+  2.If the user are logged in they have the cookiee
+  3. by the use of cookie we can get userid .
+  4. By user id we can get the user details.
+
+  !!!! Logout ------------------------->>>>>>>>>>>>>>>>>>>
+
+  if we simply delete the cookie than user get logout.................
   
+
 

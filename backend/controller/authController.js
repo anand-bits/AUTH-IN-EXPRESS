@@ -151,9 +151,37 @@ const getUser=async(req,res,next)=>
 // Till here  Token is created , Signin using the token ,Signup, and get user is working
 
 
+const logout=(req,res)=>
+{
+    try{
+        const cookieoption={
+            expires:new Date(),
+            httpOnly:true
+        }
+        res.cookie("token",null,cookieoption);
+        res.status(200).json({
+            success:true,
+            message:"Logged Out"
+        })
+    }
+
+    catch(err)
+    {
+        res.status(400).json({
+            success:false,
+            message:err.message
+        })
+    }
+
+}
+
+///Till Here The Logout ,signin,signup,get user working fine.........................
+
+
 
 
 
 module.exports={
-    signup,signin,getUser
+    signup,signin,getUser,
+    logout
 }
