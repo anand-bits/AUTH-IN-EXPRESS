@@ -42,6 +42,14 @@
   !!!! Logout ------------------------->>>>>>>>>>>>>>>>>>>
 
   if we simply delete the cookie than user get logout.................
-  
 
+
+  //------------->>>>>>>>> CORS------------------->>>>>>>>>>>>>
+
+  When u the API of Sigin through Other Server than it will give the cors error..............
+
+
+
+CORS--------------->
+Cross -origin Resource Sharing is an HTTP header based mechanism that allows a server to indicate  any origins other than its own from which a browser should permit loading resources.
 

@@ -4,6 +4,8 @@ const express= require('express')
 const app= express();
 // app.use(bodyParser.json());
 const authRouter= require('./router/authRoutes.js')
+const cors= require('cors')
+
 
 //import The database 
 const databaseconnect=require('../backend/config/databaseConfig.js');
@@ -12,6 +14,8 @@ const cookieParser= require('cookie-parser')
 databaseconnect();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
+
 
 
 app.use('/api/auth/',authRouter)
